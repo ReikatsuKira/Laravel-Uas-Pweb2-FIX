@@ -42,5 +42,6 @@
         </table>
     </div>
     @endif
+    <a href="home">Kembali</a>
 </div>
 @endsection

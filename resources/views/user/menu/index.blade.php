@@ -3,6 +3,7 @@
 @section('title', 'Menu Makanan')
 
 @section('content')
+<a href="home" style="margin-left: 30px">Kembali</a>
 <div class="container mt-4">
     <h3 class="mb-4">Menu Hari Ini 🍜</h3>
     <div class="row">
