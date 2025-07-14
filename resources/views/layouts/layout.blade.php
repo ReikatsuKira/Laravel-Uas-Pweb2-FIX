@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Admin Panel - @yield('title')</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     @vite(['resources/css/admin.css'])
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 

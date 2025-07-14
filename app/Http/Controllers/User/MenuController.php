@@ -10,7 +10,7 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all();
+        $menus = Menu::with('kategori')->get();
         return view('user.menu.index', compact('menus'));
     }
 }

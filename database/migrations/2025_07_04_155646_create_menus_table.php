@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->text('deskripsi')->nullable();
             $table->decimal('harga', 10, 0); // max 10 digit, tanpa koma
             $table->string('gambar')->nullable();
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
             $table->timestamps();
         });
     }
