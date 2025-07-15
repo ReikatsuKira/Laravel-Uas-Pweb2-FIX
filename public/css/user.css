@@ -5,19 +5,51 @@ body {
 }
 
 /* NAVBAR */
+/* Navbar Pink Styling */
 .navbar {
-    background-color: #ff69b4 !important;
-    border-bottom: 3px solid #ffb6c1;
+    background-color: #ffe4ec !important;
 }
 
-.navbar-brand, .nav-link {
-    color: white !important;
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d81b60 !important;
+}
+
+.nav-link {
+    color: #b63b6c !important;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-link.fw-bold {
+    color: #d81b60 !important; 
     font-weight: bold;
 }
 
-.nav-link:hover {
-    color: #ffd1dc !important;
+/* Dropdown Styling */
+.dropdown-menu {
+    background-color: #fff0f5;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+.dropdown-item {
+    color: #6c757d;
+}
+
+.dropdown-item:hover {
+    background-color: #f8bbd0;
+    color: #d81b60;
+}
+
+/* Nama user */
+.navbar-nav .dropdown-toggle {
+    color: #d81b60 !important;
+    font-weight: 500;
+}
+
+
 
 /* CARD */
 .card {
