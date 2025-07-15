@@ -24,6 +24,19 @@
                             <input type="number" name="jumlah" value="1" min="1" class="form-control mb-2" style="max-width: 100px; margin: 0 auto;">
                             <button type="submit" class="btn btn-pink w-100">Pesan</button>
                         </form>
+
+                        {{-- Tambah ke Keranjang --}}
+<form action="{{ route('cart.add') }}" method="POST">
+    @csrf
+    <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+    
+    <div class="input-group mb-2" style="max-width: 150px; margin: 0 auto;">
+        <input type="number" name="jumlah" value="1" min="1" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-outline-secondary w-100">+ Keranjang</button>
+</form>
+
                     </div>
                 </div>
             </div>

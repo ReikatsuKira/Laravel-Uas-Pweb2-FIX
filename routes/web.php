@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\User\MenuController as UserMenuController;
 use App\Http\Controllers\User\OrderController as UserOrderController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\User\CartController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,3 +45,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfilController::class, 'edit'])->name('profil.edit');
     Route::put('/profil', [ProfilController::class, 'update'])->name('profil.update');
 });
+
+//Keranjang
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+});
+

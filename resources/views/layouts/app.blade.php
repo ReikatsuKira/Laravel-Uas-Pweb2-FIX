@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('order*') ? 'active fw-bold text-danger' : '' }}" href="{{ route('order.index') }}">Order</a>
                         </li>
+                        <li>
+                            <a href="{{ route('cart.index') }}" class="nav-link">🛒 Keranjang</a>
+                        </li>
                     </ul>
 
                     <!-- KANAN -->

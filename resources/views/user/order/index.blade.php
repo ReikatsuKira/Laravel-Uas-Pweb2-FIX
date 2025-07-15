@@ -1,47 +1,50 @@
 @extends('layouts.app')
 
-@section('title', 'Riwayat Pesanan')
+@section('title', 'Daftar Pesanan')
 
 @section('content')
 <div class="container mt-4">
-    <h3 class="mb-4">Riwayat Pesanan 🧾</h3>
+    <h2 class="mb-4">📦 Daftar Pesanan Saya</h2>
 
-    @if ($orders->isEmpty())
-        <div class="alert alert-warning">
-            Belum ada pesanan yang dibuat.
-        </div>
-    @else
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead class="table-light">
-                <tr>
-                    <th>Nama Menu</th>
-                    <th>Jumlah</th>
-                    <th>Total Harga</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orders as $order)
-                <tr>
-                    <td>{{ $order->menu->nama_menu }}</td>
-                    <td>{{ $order->jumlah }}</td>
-                    <td>Rp{{ number_format($order->jumlah * $order->menu->harga, 0, ',', '.') }}</td>
-                    <td>
-                        @if ($order->status == 'diproses')
-                            <span class="badge bg-warning text-dark">Diproses</span>
-                        @elseif ($order->status == 'dikirim')
-                            <span class="badge bg-info text-dark">Dikirim</span>
-                        @else
-                            <span class="badge bg-success">Sampai</span>
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <a href="home">Kembali</a>
+
+    @if($orders->isEmpty())
+        <div class="alert alert-warning">Belum ada pesanan.</div>
+    @else
+        @foreach($orders as $order)
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-light">
+                    <strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($order->tanggal)->format('d M Y') }}<br>
+                    <strong>Status:</strong> 
+                    <span class="badge bg-{{ $order->status == 'diproses' ? 'warning' : ($order->status == 'dikirim' ? 'info' : 'success') }}">
+                        {{ ucfirst($order->status) }}
+                    </span>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>Menu</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($order->orderItems as $item)
+                                <tr>
+                                    <td>{{ $item->menu->nama_menu ?? '-' }}</td>
+                                    <td>{{ $item->jumlah }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-end">
+                    <strong>Total: Rp{{ number_format($order->total, 0, ',', '.') }}</strong>
+                </div>
+            </div>
+        @endforeach
+    @endif
 </div>
 @endsection

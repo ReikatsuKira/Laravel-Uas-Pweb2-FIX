@@ -15,5 +15,10 @@ class Menu extends Model {
     {
         return $this->belongsTo(Kategori::class);
     }
+    public function orderItems()
+{
+    return $this->hasMany(OrderItem::class, 'menu_id');
+}
+
 
 }

@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('user', 'menu')->get();
+        $orders = Order::with(['user', 'orderItems.menu'])->get();
         return view('admin.order.index', compact('orders'));
     }
 

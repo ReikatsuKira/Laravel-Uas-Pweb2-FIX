@@ -6,17 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->date('tanggal');
-            $table->integer('total');
-            $table->string('status')->default('diproses');
+            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->foreignId('menu_id')->constrained('menus')->onDelete('cascade');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
 
     public function down(): void {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_items');
     }
 };

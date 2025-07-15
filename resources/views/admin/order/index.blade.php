@@ -14,6 +14,7 @@
     <table class="table table-hover table-bordered align-middle text-center">
         <thead class="table-dark">
             <tr>
+                <th>ID Order</th>
                 <th>Menu</th>
                 <th>Jumlah</th>
                 <th>Pemesan</th>
@@ -23,37 +24,40 @@
         </thead>
         <tbody>
             @forelse ($orders as $order)
-                <tr>
-                    <td>{{ $order->menu->nama_menu }}</td>
-                    <td>{{ $order->jumlah }}</td>
-                    <td>{{ $order->user->name }}</td>
-                    <td>
-                        @php
-                            $badgeClass = match($order->status) {
-                                'diproses' => 'badge bg-warning',
-                                'dikirim' => 'badge bg-info text-dark',
-                                'sampai' => 'badge bg-success',
-                                default => 'badge bg-secondary'
-                            };
-                        @endphp
-                        <span class="{{ $badgeClass }}">
-                            <i class="bi bi-circle-fill me-1"></i>{{ ucfirst($order->status) }}
-                        </span>
-                    </td>
-                    <td>
-                        <form method="POST" action="{{ route('admin.order.updateStatus', $order) }}">
-                            @csrf
-                            <select name="status" onchange="this.form.submit()" class="form-select">
-                                <option value="diproses" {{ $order->status === 'diproses' ? 'selected' : '' }}>Diproses</option>
-                                <option value="dikirim" {{ $order->status === 'dikirim' ? 'selected' : '' }}>Dikirim</option>
-                                <option value="sampai" {{ $order->status === 'sampai' ? 'selected' : '' }}>Sampai</option>
-                            </select>
-                        </form>
-                    </td>
-                </tr>
+                @foreach($order->orderItems as $item)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $item->menu->nama_menu ?? '-' }}</td>
+                        <td>{{ $item->jumlah }}</td>
+                        <td>{{ $order->user->name ?? '-' }}</td>
+                        <td>
+                            @php
+                                $badgeClass = match($order->status) {
+                                    'diproses' => 'badge bg-warning',
+                                    'dikirim' => 'badge bg-info text-dark',
+                                    'sampai' => 'badge bg-success',
+                                    default => 'badge bg-secondary'
+                                };
+                            @endphp
+                            <span class="{{ $badgeClass }}">
+                                <i class="bi bi-circle-fill me-1"></i>{{ ucfirst($order->status) }}
+                            </span>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('admin.order.updateStatus', $order) }}">
+                                @csrf
+                                <select name="status" onchange="this.form.submit()" class="form-select">
+                                    <option value="diproses" {{ $order->status === 'diproses' ? 'selected' : '' }}>Diproses</option>
+                                    <option value="dikirim" {{ $order->status === 'dikirim' ? 'selected' : '' }}>Dikirim</option>
+                                    <option value="sampai" {{ $order->status === 'sampai' ? 'selected' : '' }}>Sampai</option>
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             @empty
                 <tr>
-                    <td colspan="5">Belum ada order masuk.</td>
+                    <td colspan="6">Belum ada order masuk.</td>
                 </tr>
             @endforelse
         </tbody>

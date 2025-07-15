@@ -3,15 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Order extends Model {
-    protected $fillable = ['user_id', 'menu_id', 'jumlah', 'status'];
+class Order extends Model
+{
+    use HasFactory;
 
-    public function user() {
+    protected $fillable = ['user_id', 'tanggal', 'total', 'status'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function menu() {
-        return $this->belongsTo(Menu::class);
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
