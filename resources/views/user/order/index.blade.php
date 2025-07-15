@@ -3,48 +3,122 @@
 @section('title', 'Daftar Pesanan')
 
 @section('content')
-<div class="container mt-4">
-    <h2 class="mb-4">📦 Daftar Pesanan Saya</h2>
+<style>
+    body {
+        background: url('{{ asset('menu/kantin-bg.png.jpeg') }}') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Poppins', sans-serif;
+    }
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+    .riwayat-wrapper {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+        animation: float 2.5s ease-in-out infinite;
+    }
 
-    @if($orders->isEmpty())
-        <div class="alert alert-warning">Belum ada pesanan.</div>
-    @else
-        @foreach($orders as $order)
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header bg-light">
-                    <strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($order->tanggal)->format('d M Y') }}<br>
-                    <strong>Status:</strong> 
-                    <span class="badge bg-{{ $order->status == 'diproses' ? 'warning' : ($order->status == 'dikirim' ? 'info' : 'success') }}">
-                        {{ ucfirst($order->status) }}
-                    </span>
-                </div>
-                <div class="card-body p-0">
-                    <table class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th>Menu</th>
-                                <th>Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($order->orderItems as $item)
-                                <tr>
-                                    <td>{{ $item->menu->nama_menu ?? '-' }}</td>
-                                    <td>{{ $item->jumlah }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer text-end">
-                    <strong>Total: Rp{{ number_format($order->total, 0, ',', '.') }}</strong>
-                </div>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+
+    h3 {
+        color: #d63384;
+        font-weight: bold;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .table thead {
+        background-color: #ffd1dc;
+        color: #b63b6c;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+        border-radius: 12px;
+    }
+
+    .btn-back {
+        background-color: #ff69b4;
+        color: white;
+        font-weight: bold;
+        padding: 8px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
+
+    .btn-back:hover {
+        background-color: #ff4081;
+        box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+        transform: scale(1.05);
+    }
+
+    .emoji-title {
+        font-size: 1.8rem;
+        animation: bounce 1.5s infinite;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+</style>
+
+<div class="container py-4">
+    <div class="riwayat-wrapper">
+        <h3><span class="emoji-title">🧾</span> Riwayat Pesanan Kamu</h3>
+
+        @if ($orders->isEmpty())
+            <div class="alert alert-warning text-center">
+                Belum ada pesanan yang dibuat. Yuk pesan makanan dulu! 🍱✨
             </div>
-        @endforeach
-    @endif
+        @else
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="text-center">
+                    <tr>
+                        <th>🍽️ Nama Menu</th>
+                        <th>🔢 Jumlah</th>
+                        <th>💰 Total Harga</th>
+                        <th>📦 Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($orders as $order)
+                    <tr class="text-center">
+                        <td>{{ $order->menu->nama_menu }}</td>
+                        <td>{{ $order->jumlah }}</td>
+                        <td><strong>Rp{{ number_format($order->jumlah * $order->menu->harga, 0, ',', '.') }}</strong></td>
+                        <td>
+                            @if ($order->status == 'diproses')
+                                <span class="badge bg-warning text-dark">⏳ Diproses</span>
+                            @elseif ($order->status == 'dikirim')
+                                <span class="badge bg-info text-dark">🚚 Dikirim</span>
+                            @else
+                                <span class="badge bg-success">✅ Sampai</span>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        @endif
+
+        <div class="text-center mt-4">
+            <a href="{{ route('home') }}" class="btn-back">← Kembali ke Beranda</a>
+        </div>
+    </div>
 </div>
 @endsection
