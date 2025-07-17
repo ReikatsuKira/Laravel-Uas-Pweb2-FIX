@@ -88,6 +88,7 @@
             <table class="table table-bordered align-middle">
                 <thead class="text-center">
                     <tr>
+                        <th>📅 Tanggal</th>
                         <th>🍽️ Nama Menu</th>
                         <th>🔢 Jumlah</th>
                         <th>💰 Total Harga</th>
@@ -96,20 +97,23 @@
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
-                    <tr class="text-center">
-                        <td>{{ $order->menu->nama_menu }}</td>
-                        <td>{{ $order->jumlah }}</td>
-                        <td><strong>Rp{{ number_format($order->jumlah * $order->menu->harga, 0, ',', '.') }}</strong></td>
-                        <td>
-                            @if ($order->status == 'diproses')
-                                <span class="badge bg-warning text-dark">⏳ Diproses</span>
-                            @elseif ($order->status == 'dikirim')
-                                <span class="badge bg-info text-dark">🚚 Dikirim</span>
-                            @else
-                                <span class="badge bg-success">✅ Sampai</span>
-                            @endif
-                        </td>
-                    </tr>
+                        @foreach ($order->orderItems as $item)
+                            <tr class="text-center">
+                                <td>{{ \Carbon\Carbon::parse($order->tanggal)->format('d M Y') }}</td>
+                                <td>{{ optional($item->menu)->nama_menu ?? 'Menu tidak tersedia' }}</td>
+                                <td>{{ $item->jumlah }}</td>
+                                <td><strong>Rp{{ number_format($item->jumlah * ($item->menu->harga ?? 0), 0, ',', '.') }}</strong></td>
+                                <td>
+                                    @if ($order->status == 'diproses')
+                                        <span class="badge bg-warning text-dark">⏳ Diproses</span>
+                                    @elseif ($order->status == 'dikirim')
+                                        <span class="badge bg-info text-dark">🚚 Dikirim</span>
+                                    @else
+                                        <span class="badge bg-success">✅ Sampai</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>

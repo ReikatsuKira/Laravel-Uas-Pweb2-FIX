@@ -36,24 +36,35 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <!-- KIRI -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('home') ? 'active fw-bold text-danger' : '' }}" href="{{ route('home') }}">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('menu*') ? 'active fw-bold text-danger' : '' }}" href="{{ route('menu.index') }}">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('order*') ? 'active fw-bold text-danger' : '' }}" href="{{ route('order.index') }}">Order</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('cart.index') }}" class="nav-link">🛒 Keranjang</a>
-                        </li>
-                    </ul>
-
-                    <!-- KANAN -->
-                    <ul class="navbar-nav ms-auto">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
     @auth
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('home') ? 'active fw-bold text-danger' : '' }}" href="{{ route('home') }}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('menu*') ? 'active fw-bold text-danger' : '' }}" href="{{ route('menu.index') }}">Menu</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('order*') ? 'active fw-bold text-danger' : '' }}" href="{{ route('order.index') }}">Order</a>
+        </li>
+        <li>
+            <a href="{{ route('cart.index') }}" class="nav-link">🛒 Keranjang</a>
+        </li>
+    @endauth
+</ul>
+
+<!-- KANAN -->
+<ul class="navbar-nav ms-auto">
+    @guest
+        <li class="nav-item">
+            <a class="nav-link fw-bold text-danger" href="{{ route('login') }}">Login</a>
+        </li>
+        @if (Route::has('register'))
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="{{ route('register') }}">Register</a>
+            </li>
+        @endif
+    @else
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
                data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,9 +89,8 @@
                 </li>
             </ul>
         </li>
-    @endauth
+    @endguest
 </ul>
-
 
                 </div>
             </div>

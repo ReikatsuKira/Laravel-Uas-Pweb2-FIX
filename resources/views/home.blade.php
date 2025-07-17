@@ -25,7 +25,7 @@
                 </p>
 
                 <!-- Tombol Kategori -->
-                <div class="action-buttons mb-4">
+                <!-- <div class="action-buttons mb-4">
                     <div class="row">
                         <div class="col-md-4 mb-2">
                             <button class="btn btn-outline-danger btn-lg btn-block py-3 w-100">
@@ -43,7 +43,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- CTA -->
                 <a href="{{ route('menu.index') }}" class="btn btn-pink btn-lg px-5 py-3">
@@ -73,7 +73,7 @@
             <h2 class="section-title">Layanan Kami</h2>
             <p class="text-muted mb-5">Pilih menu favorit Anda dan nikmati pengalaman kuliner yang menyenangkan</p>
 
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- Makanan -->
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm h-100">
@@ -85,17 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Minuman -->
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body">
-                            <i class="fas fa-coffee fa-3x text-info mb-3"></i>
-                            <h5 class="card-title">Menu Minuman</h5>
-                            <p class="text-muted">Minuman segar dan menyehatkan untuk hari Anda.</p>
-                            <a href="{{ route('menu.index') }}" class="btn btn-info">Pesan Minuman</a>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- Riwayat -->
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm h-100">
