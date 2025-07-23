@@ -1,8 +1,7 @@
 <footer style="background-color: #fff; border-top: 1px solid #eee; padding: 2rem 1rem; font-family: 'Poppins', sans-serif;">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1100px; margin: 0 auto; gap: 2rem;">
-        
+
+>>>>>>> b4703a3 (debugging)
         <!-- Alamat -->
         <div style="flex: 1; min-width: 250px;">
             <h4 style="font-weight: 600; margin-bottom: 10px;">Physical Address</h4>
@@ -28,24 +27,30 @@
             <h4 style="font-weight: 600; margin-bottom: 10px;">Instagram</h4>
             <p>
                 <a href="https://www.instagram.com/lusyyaggr.14/" target="_blank" style="text-decoration: none; color: inherit;">
-                    <i class="fa fa-instagram" style="font-size:18px"></i> Lusi anggraeni
+                    <i class="bi bi-instagram" style="font-size:18px"></i> Lusi anggraeni
+>>>>>>> b4703a3 (debugging)
                 </a>
             </p>
             <p>
                 <a href="https://www.instagram.com/artddhean_/" target="_blank" style="text-decoration: none; color: inherit;">
-                    <i class="fa fa-instagram" style="font-size:18px"></i> Dea Nur Artsyan
+                    <i class="bi bi-instagram" style="font-size:18px"></i> Dea Nur Artsyan
+>>>>>>> b4703a3 (debugging)
                 </a>
             </p>
             <p>
                 <a href="https://www.instagram.com/deaisnnn/" target="_blank" style="text-decoration: none; color: inherit;">
-                    <i class="fa fa-instagram" style="font-size:18px"></i> Dea Isnaini
+                    <i class="bi bi-instagram" style="font-size:18px"></i> Dea Isnaini
+>>>>>>> b4703a3 (debugging)
                 </a>
             </p>
             <p>
                 <a href="https://www.instagram.com/vaaare_/" target="_blank" style="text-decoration: none; color: inherit;">
-                    <i class="fa fa-instagram" style="font-size:18px"></i> Neng Reva Rahmayanti 
+
+                    <i class="bi bi-instagram" style="font-size:18px"></i> Neng Reva Rahmayanti
                 </a>
             </p>
+
+>>>>>>> b4703a3 (debugging)
         </div>
 
     </div>

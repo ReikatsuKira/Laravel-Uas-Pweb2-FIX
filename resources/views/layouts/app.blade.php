@@ -1,8 +1,14 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+<<<<<<< HEAD
     
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-nMZPq1v7y+1m5BLbXD8wXY3yySk9NVOaAnm8gR7hr9Ih9uBLc8zZ8L8j6I7Xc2Zk5t77JepRIWQ2OdyhQbkFxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+=======
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-TU5bY0kV9XrjQgx+R9FzVpM9O2P0Zw2kkM2xQOCc0ddfZUwQH8GDZj3FZ69PQ9Z7Lkv1CB7axYi7aG/1vcIbWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+>>>>>>> b4703a3 (debugging)
 
 
     <meta charset="utf-8">

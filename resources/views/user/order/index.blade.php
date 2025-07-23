@@ -5,8 +5,6 @@
 @section('content')
 <style>
     body {
-        background: url('{{ asset('menu/kantin-bg.png.jpeg') }}') no-repeat center center fixed;
-        background-size: cover;
         font-family: 'Poppins', sans-serif;
     }
 
