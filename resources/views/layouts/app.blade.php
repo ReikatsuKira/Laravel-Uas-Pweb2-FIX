@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-nMZPq1v7y+1m5BLbXD8wXY3yySk9NVOaAnm8gR7hr9Ih9uBLc8zZ8L8j6I7Xc2Zk5t77JepRIWQ2OdyhQbkFxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

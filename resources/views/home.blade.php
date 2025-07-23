@@ -58,7 +58,7 @@
     <div class="card border-0 shadow-sm" style="background-color: #c11a62; border-radius: 1rem;">
         <div class="card-body text-center py-4 text-white">
             <h4 class="mb-1">
-                <i class="fas fa-user-circle me-2"></i>
+                <i class="fa-solid fa-user"></i>
                 Hai, <strong>{{ Auth::user()->name }}</strong>! 👋
             </h4>
             <p class="mb-0">Selamat datang di <strong>Kantin Ceria 🍱</strong></p>
